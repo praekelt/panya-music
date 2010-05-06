@@ -20,4 +20,4 @@ Installation
 Usage
 -----
 
-A listen live popup utilizing the audio embed object specified in your settings can be access through */music/listen-live*
+A listen live popup utilizing the audio embed object specified in your settings can be access through */music/listen-live* (the url pattern is named *music_listen_live* if you want to use reverse or the url tag).
