@@ -51,6 +51,7 @@ class Track(ModelBase):
     video_embed = models.TextField(
         blank=True,
         null=True,
+        help_text="A video embed script related to the track. Ensure the video is set to 422 x 344.",
     )
 
     def get_primary_contributors(self):
