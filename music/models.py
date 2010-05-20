@@ -32,6 +32,7 @@ class Credit(models.Model):
     
 class TrackContributor(ModelBase):
     profile = RichTextField(
+        help_text='Full profile for this contributor.',
         blank=True,
         null=True,
     )
