@@ -48,7 +48,11 @@ class Track(ModelBase):
         through='music.Credit',
         related_name='tracks',
     )
-    album = models.ManyToManyField(Album)
+    album = models.ManyToManyField(
+        Album,
+        blank=True,
+        null=True,
+    )
     video_embed = models.TextField(
         blank=True,
         null=True,
