@@ -10,8 +10,8 @@ class AudioEmbed(ModelBase):
     embed = models.TextField()
     
     class Meta():
-        verbose_name = "Audio Embed"
-        verbose_name_plural = "Audio Embeds"
+        verbose_name = "Audio embed"
+        verbose_name_plural = "Audio embeds"
     
 class Album(ModelBase):
     pass
@@ -84,8 +84,8 @@ class MusicOptions(Options):
     __module__ = 'options.models'
     
     class Meta:
-        verbose_name = "Music Option"
-        verbose_name_plural = "Music Options"
+        verbose_name = "Music option"
+        verbose_name_plural = "Music options"
 
 class MusicCreditOption(models.Model):
     music_options = models.ForeignKey('options.MusicOptions')
