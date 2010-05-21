@@ -1,1 +1,1 @@
-[{"pk": 8, "model": "photologue.photosize", "fields": {"name": "track_thumbnail", "watermark": null, "increment_count": false, "effect": null, "crop": true, "height": 75, "width": 75, "upscale": true, "pre_cache": false, "quality": 70}}]
+[{"pk": 14, "model": "photologue.photosize", "fields": {"name": "track_thumbnail", "watermark": null, "increment_count": false, "effect": null, "crop": true, "height": 70, "width": 70, "upscale": true, "pre_cache": false, "quality": 70}}]
