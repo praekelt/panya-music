@@ -41,7 +41,7 @@ class TrackAdmin(ModelBaseAdmin):
         TrackCreditInline, 
     )
 
-admin.site.register(Album)
+admin.site.register(Album, ModelBaseAdmin)
 admin.site.register(AudioEmbed, ModelBaseAdmin)
 admin.site.register(Track, TrackAdmin)
 admin.site.register(MusicOptions, MusicOptionsAdmin)
