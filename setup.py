@@ -14,6 +14,8 @@ setup(
         'https://github.com/praekelt/panya/tarball/master#egg=panya',
     ],
     install_requires = [
+        'django-ckeditor',
+        'django-preferences',
         'panya',
     ],
     include_package_data=True,
