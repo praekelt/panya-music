@@ -1,9 +1,8 @@
 from django.db import models
 
 from ckeditor.fields import RichTextField
-from content.models import ModelBase
-from options.models import Options
-
+from panya.models import ModelBase
+from preferences.models import Preferences
 
 # Content models
 class AudioEmbed(ModelBase):
@@ -80,15 +79,15 @@ class Track(ModelBase):
         return contributors
 
 # Options models
-class MusicOptions(Options):
-    __module__ = 'options.models'
+class MusicPreferences(Preferences):
+    __module__ = 'preferences.models'
     
     class Meta:
-        verbose_name = "Music option"
-        verbose_name_plural = "Music options"
+        verbose_name = "Music preferences"
+        verbose_name_plural = "Music preferences"
 
 class MusicCreditOption(models.Model):
-    music_options = models.ForeignKey('options.MusicOptions')
+    music_preferences = models.ForeignKey('preferences.MusicPreferences')
     role_name = models.CharField(
         max_length=256,
         blank=True,
