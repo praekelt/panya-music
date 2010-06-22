@@ -1,4 +1,4 @@
-from content.generic.views import GenericObjectDetail
+from panya.generic.views import GenericObjectDetail
 from music.models import AudioEmbed, Track
 
 class ListenLive(GenericObjectDetail):
