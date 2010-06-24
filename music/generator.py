@@ -11,7 +11,7 @@ CONTRIBUTOR_ROLE = [[1, "Artist"], [2, "Producer"], [3, "Composer"]]
 def generate():
     objects = []
     
-    # generate music options objects
+    # generate music preferences objects
     for i in range(0, CONTRIBUTOR_COUNT):
         contributor_role = CONTRIBUTOR_ROLE[i]
         objects.append({
@@ -19,8 +19,8 @@ def generate():
             "fields": {
                 "role_priority": contributor_role[0],
                 "role_name": contributor_role[1],
-                "music_options": {
-                    "model": "options.MusicOptions",
+                "music_preferences": {
+                    "model": "preferences.MusicPreferences",
                 },
             },
         })
