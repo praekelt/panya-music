@@ -1,0 +1,12 @@
+<div class="modal pop_video">
+
+<h1>{{ object.get_primary_contributors|join:", " }}</h1>
+
+<a href="javascript: void(0);" onclick="tb_remove()" id="TB_closeWindowButton" class="close"></a>
+<h2>{{ object.title }}</h2>
+
+<div class="modal_video">
+{{ object.video_embed|safe }}
+</div>
+
+</div>
