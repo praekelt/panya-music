@@ -10,9 +10,6 @@ setup(
     license='BSD',
     url='http://github.com/praekelt/panya-music',
     packages = find_packages(),
-    dependency_links = [
-        'https://github.com/praekelt/panya/tarball/master#egg=panya',
-    ],
     install_requires = [
         'django-ckeditor',
         'django-preferences',
@@ -24,7 +21,7 @@ setup(
         "License :: OSI Approved :: BSD License",
         "Development Status :: 4 - Beta",
         "Operating System :: OS Independent",
-        "Framework :: Panya",
+        "Framework :: Django",
         "Intended Audience :: Developers",
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
     ],
