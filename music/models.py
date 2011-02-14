@@ -57,6 +57,11 @@ class Track(ModelBase):
         null=True,
         help_text="A video embed script related to the track. Ensure the video is set to 422 x 344.",
     )
+    last_played = models.DateTimeField(
+        blank=True,
+        null=True,
+        auto_now_add=True,
+    )
 
     def get_primary_contributors(self):
         """
