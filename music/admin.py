@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from panya.admin import ModelBaseAdmin
 from preferences import preferences
-from music.models import AudioEmbed, Album, Credit, MusicCreditOption, Track, MusicPreferences
+from music.models import AudioEmbed, Album, Credit, MusicCreditOption, Track, TrackContributor, MusicPreferences
 
 class MusicCreditOptionInline(admin.TabularInline):
     model = MusicCreditOption
@@ -43,5 +43,6 @@ class TrackAdmin(ModelBaseAdmin):
 
 admin.site.register(Album, ModelBaseAdmin)
 admin.site.register(AudioEmbed, ModelBaseAdmin)
-admin.site.register(Track, TrackAdmin)
 admin.site.register(MusicPreferences, MusicPreferencesAdmin)
+admin.site.register(Track, TrackAdmin)
+admin.site.register(TrackContributor, ModelBaseAdmin)
