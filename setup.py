@@ -14,6 +14,7 @@ setup(
         'django-ckeditor',
         'django-preferences',
         'panya',
+        'pylast',
     ],
     include_package_data=True,
     classifiers = [
