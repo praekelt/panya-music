@@ -63,12 +63,12 @@ class TrackImporter(object):
                 obj = self.lookup_track(track)
                 # Don't update importing track that is regarded as the latest. This prevents start times from constantly incrementing.
                 if latest_track and obj == latest_track:
-                    print "[%s-%s]: Not updated as it is the latest track." % (track.title, track.artist)
+                    print "[%s-%s]: Start time not updated as it is the latest track." % (track.title, track.artist)
                     continue
 
                 # If no existing track object could be resolved, create it.
                 if not obj:
-                    print "[%s-%s]: Created, starting at %s." % (track.title, track.artist, track.start_time.time())
+                    print "[%s-%s]: Created." % (track.title, track.artist)
                     obj = Track.objects.create(title=track.title)
                     obj.length = track.length
                     roles = MusicCreditOption.objects.all().order_by('role_priority') 
@@ -80,6 +80,6 @@ class TrackImporter(object):
                 # Update last played time to start time.
                 obj.last_played = track.start_time
                 obj.save()
-                print "[%s-%s]: Updated, starting at %s." % (track.title, track.artist, track.start_time)
+                print "[%s-%s]: Start time updated to %s." % (track.title, track.artist, track.start_time)
             else:
-                print "[%s-%s]: not created as it has a past start time of %s (latest %s). " % (track.title, track.artist, track.start_time, latest_track.last_played)
+                print "[%s-%s]: Not created as it has a past start time of %s (latest %s). " % (track.title, track.artist, track.start_time, latest_track.last_played)
