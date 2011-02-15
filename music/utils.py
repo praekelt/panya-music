@@ -22,17 +22,13 @@ def set_image_via_lastfm(artist_title, field):
         url = artist.get_cover_image()
         if url:
             file_name = '.'.join([artist_title, url.split('.')[-1]]).replace('/', '-')
-            handler = urlopen(url)
-            size = handler.headers.get('content-length')
-            data = handler.read()
+            data = urlopen(url).read()
             if hashlib.md5(data).hexdigest() not in INVALID_IMAGE_MD5: 
-                f = cStringIO.StringIO()
+                relative_path = field[0].upload_to('', file_name)
+                f = open(os.path.join(settings.MEDIA_ROOT, relative_path), 'w')
                 f.write(data)
-                field_name = str(field)
-                content_type=mimetypes.guess_type(file_name)[0]
-                
-                result = InMemoryUploadedFile(f, field_name, file_name, content_type, size, None)
-                field.save(result.name, result)
                 f.close()
+                return relative_path
     except Exception, e:
+        print "Unable to set image for %s: %s" % (artist_title, e)
         logging.fatal("Unable to set image for %s: %s" % (artist_title, e))
