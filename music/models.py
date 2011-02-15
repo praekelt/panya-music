@@ -1,8 +1,10 @@
 from django.db import models
 
 from ckeditor.fields import RichTextField
+from music import utils
 from panya.models import ModelBase
 from preferences.models import Preferences
+import pylast
 
 # Content models
 class AudioEmbed(ModelBase):
@@ -40,6 +42,10 @@ class TrackContributor(ModelBase):
         through='music.Credit',
         related_name='contributors',
     )
+    def save(self, *args, **kwargs):
+        if not self.image:
+            utils.set_image_via_lastfm(self.title, self.image)
+        super(TrackContributor, self).save(*args, **kwargs)
 
 class Track(ModelBase):
     contributor = models.ManyToManyField(
