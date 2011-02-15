@@ -44,7 +44,8 @@ class TrackContributor(ModelBase):
     )
     def save(self, *args, **kwargs):
         if not self.image:
-            utils.set_image_via_lastfm(self.title, self.image)
+            self.image = utils.set_image_via_lastfm(self.title, self._meta.get_field_by_name('image'))
+
         super(TrackContributor, self).save(*args, **kwargs)
 
 class Track(ModelBase):
