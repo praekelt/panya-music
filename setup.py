@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='panya-music',
-    version='0.0.3',
+    version='0.0.4',
     description='Panya music app.',
     long_description = open('README.rst', 'r').read(),
     author='Praekelt Foundation',
