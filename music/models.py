@@ -60,12 +60,16 @@ class Track(ModelBase):
     last_played = models.DateTimeField(
         blank=True,
         null=True,
-        auto_now_add=True,
+    )
+    length = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="Length of track in seconds."
     )
 
-    def get_primary_contributors(self):
+    def get_primary_contributors(self, permitted=True):
         """
-        Returns a list of primary contributors, with primary being defined as those contributors that have the highest role assigned(in terms of priority). Only premitted contributors are returned.
+        Returns a list of primary contributors, with primary being defined as those contributors that have the highest role assigned(in terms of priority). When permitted is set to True only permitted contributors are returned.
         """
         primary_credits = []
         credits = self.credits.exclude(role=None).order_by('role')
@@ -78,10 +82,17 @@ class Track(ModelBase):
         contributors = []
         for credit in primary_credits:
             contributor = credit.contributor
-            if contributor.is_permitted:
+            if permitted and contributor.is_permitted:
+                contributors.append(contributor)
+            else:
                 contributors.append(contributor)
 
         return contributors
+
+    def create_credit(self, contributor_title, role):
+        contributor, created = TrackContributor.objects.get_or_create(title=contributor_title)
+        credit, created = Credit.objects.get_or_create(contributor=contributor, track=self, role=role)
+        return credit, contributor
 
 # Options models
 class MusicPreferences(Preferences):
