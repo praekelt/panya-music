@@ -59,7 +59,8 @@ class TrackImporter(object):
         # Create/update Django Track objects for importer tracks.
         for track in tracks:
             # Only create/update if tracks with start times greater than what already exists are imported. 
-            if not latest_track or track.start_time > latest_track.last_played:
+            if not latest_track or not latest_track.last_played \
+                    or track.start_time > latest_track.last_played:
                 obj = self.lookup_track(track)
                 # Don't update importing track that is regarded as the latest. This prevents start times from constantly incrementing.
                 if latest_track and obj == latest_track:
